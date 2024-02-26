@@ -36,6 +36,20 @@ class MyApp extends StatelessWidget {
   }
 }
 
+class MyHomePage entends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('StatelessPage'),
+      ),
+      body: const Center(
+        child: Text('書き換えしないページ'),
+      ),
+    );
+  } 
+}
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
@@ -56,6 +70,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  // String _type = '偶数';
 
   void _incrementCounter() {
     setState(() {
@@ -65,6 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      // if (_counter % 2 == 0) {
+      //   _type = '偶数';
+      // } else {
+      //   _type = '奇数';
+      // }
+      // print('HelloWorld');
     });
   }
 
@@ -84,9 +105,42 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
+        // title: Row(children:const[
+        //   Icon(Icons.create),
+        //   Text('初めてのタイトル'),
+        // ]),
         title: Text(widget.title),
       ),
-      body: Center(
+      body: 
+      // Column(children: [
+      //   const Text('Hello World'),
+      //   const Text('ハローワールド'),
+      //   TextButton(
+      //     onPressed: () => {print('ボタンが押されたよ')},
+      //     child: const Text('テキストボタン'),
+      //   ),
+      //   Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: const [
+      //       Icon(
+      //         Icons.favorite,
+      //         color: Colors.pink,
+      //         size: 24.0,
+      //       ),
+      //       Icon(
+      //         Icons.audiotrack,
+      //         color: Colors.green,
+      //         size: 30.0,
+      //       ),
+      //       Icon(
+      //         Icons.beach_access,
+      //         color: Colors.blue,
+      //         size: 36.0,
+      //       ),
+      //     ],
+      //   )
+      // ]),
+      Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -112,14 +166,32 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            // Text(
+            //   '$_type', 
+            //   style: TextStyle(fontSize: 20, color: Colors.red),
+            // ),
+            if (_counter % 2 == 0)
+              const Text(
+                '偶数です',
+                 style: TextStyle(fontSize: 20, color: Colors.red),
+              ),
           ],
         ),
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => {print('押したね？')}, child: const Icon(Icons.timer)
+      // ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+      // drawer: const Drawer(
+      //   child: Center(child: Text('Drawer'),
+      // )),
+      // endDrawer: const Drawer(
+      //   child: Center(child: Text('EndDrawer'),
+      // )),
     );
   }
 }
